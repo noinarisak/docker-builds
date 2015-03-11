@@ -3,9 +3,9 @@ FROM ubuntu:latest
 MAINTAINER NodeBB Docker Team <docker-devs@nodebb.org>
 
 # Install base packages
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install nodejs nodejs-legacy npm imagemagick git -y
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y nodejs nodejs-legacy npm imagemagick git
 
 # Install nodebb
 RUN cd /opt && git clone -b v0.5.x https://github.com/NodeBB/NodeBB nodebb
