@@ -11,6 +11,9 @@ RUN apt-get install nodejs nodejs-legacy npm imagemagick git -y
 RUN cd /opt && git clone -b v0.6.x https://github.com/NodeBB/NodeBB nodebb
 RUN cd /opt/nodebb && npm install
 
+# Install forever
+RUN npm install -g forever
+
 # Create a mountable volume
 VOLUME /opt/nodebb
 
@@ -23,4 +26,5 @@ EXPOSE 443
 EXPOSE 4567
 
 # Define default command.
-CMD ["node", "app.js"]
+#CMD ["node", "app.js"]
+CMD ["forever", "start", "app.js"]
